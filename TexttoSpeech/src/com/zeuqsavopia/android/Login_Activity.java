@@ -1,4 +1,6 @@
-package com.prgguru.android;
+package com.zeuqsavopia.android;
+
+import com.prgguru.android.R;
 
 import android.app.Activity;
 import android.content.Context;

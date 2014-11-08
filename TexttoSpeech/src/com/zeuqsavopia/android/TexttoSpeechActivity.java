@@ -1,7 +1,9 @@
-package com.prgguru.android;
+package com.zeuqsavopia.android;
 
 import java.util.ArrayList;
 import java.util.Locale;
+
+import com.prgguru.android.R;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -192,7 +194,7 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 		c = db.rawQuery("select * from actividades where idactividad = '" + nactividad + 
 				"' and idtarea ='" + ntarea + "' and respuestaesperada = '" + text2 + "'", null);
 		if (c.moveToFirst()) 
-		{
+		{ 
 			String resp=c.getString(8).toString();
 			db.close();
 			return  (resp) ;
