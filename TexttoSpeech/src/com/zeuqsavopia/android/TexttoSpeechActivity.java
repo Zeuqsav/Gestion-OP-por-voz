@@ -3,7 +3,7 @@ package com.zeuqsavopia.android;
 import java.util.ArrayList;
 import java.util.Locale;
 
-import com.prgguru.android.R;
+import com.zeuqsavopia.android.R;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -37,6 +37,7 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 	int nactividad;
 	private int ntarea;
 	private int ncomport;
+	private int tareatomada;
 	
 	
 	public  String text;
@@ -54,6 +55,8 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 		nactividad = 1;
 		ntarea =1;
 		ncomport=1;
+		tareatomada=0;
+		
 		
 		
 		btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -123,13 +126,11 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 	private void speakOut() {
 
 		text = txtText.getText().toString();
-		String respuesta = Respuesta(txtTextV.getText().toString());
+		String respuesta = Respuesta(txtTextV.getText().toString().toLowerCase());
 		tts.setPitch(1);
 		tts.setSpeechRate(1);
 		if (text.length() == 0) {
-			
 			tts.speak(respuesta, TextToSpeech.QUEUE_FLUSH, null);
-			
 		} else {
 			tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 		}
@@ -143,7 +144,7 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 	    String qry = "select * from actividades where idactividad ='"+ nactividad +"'";
 		Cursor c = db.rawQuery(qry, null);
 		
-		if(ntarea == 1 && text2.equals("Texto oido"))
+		if(tareatomada == 0 && text2.equals("Texto oido") ||  text2.equals(""))
 		{	
 		if (c.moveToFirst()) 
 			{
@@ -154,9 +155,11 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 			}
 		}
 		
-		if ((text2.equals("Si") || text2.equals("si")) && ntarea == 1)
+		if ((text2.equals("Si") || text2.equals("si")) && tareatomada == 0)
 		{
 		ntarea = ntarea + 1;
+		tareatomada=ntarea;
+		
 		c = db.rawQuery("select * from actividades where idactividad = '" + nactividad + "' and idtarea = '" + ntarea+"'", null);
 			if (c.moveToFirst()) 
 			{	
@@ -166,20 +169,28 @@ public class TexttoSpeechActivity extends Activity implements OnInitListener {
 			}	
 		}
 		
-		if ((text2.equals("No") || text2.equals("no")) && ntarea == 1)
-		{
-		nactividad = nactividad + 1;
-		ntarea = ntarea + 1;
-		c = db.rawQuery("select * from actividades where idactividad = '" + nactividad+"'", null);
-			if (c.moveToFirst()) 
+		if ((text2.equals("No") || text2.equals("no")) && tareatomada == 0)
 			{
-				String resp=c.getString(1).toString() +" , "+ c.getString(3).toString() +" , "+ c.getString(5).toString() ;
-				db.close();
-				return  (resp) ;
-			}	
+			nactividad = nactividad + 1;
+			ntarea = ntarea + 1;
+			c = db.rawQuery("select * from actividades where idactividad = '" + nactividad+"'", null);
+				if (c.moveToFirst()) 
+				{
+					String resp=c.getString(1).toString() +" , "+ c.getString(3).toString() +" , "+ c.getString(5).toString() ;
+					db.close();
+					return  (resp) ;
+				}	
+				else
+				{
+					nactividad = 1;
+					ntarea =  1;
+					return  "no hay mas atividades se devuelve al comiennzo de la lista" ;
+				}
+				
+			
 		}
 		
-		if ((text2.equals("Listo") || text2.equals("listo")) && ntarea != 1)
+		if ((text2.equals("Listo") || text2.equals("listo")) && tareatomada != 0)
 		{
 		ntarea = ntarea + 1;
 		c = db.rawQuery("select * from actividades where idactividad = '" + nactividad+"' and idtarea ='"+ ntarea +"'", null);
