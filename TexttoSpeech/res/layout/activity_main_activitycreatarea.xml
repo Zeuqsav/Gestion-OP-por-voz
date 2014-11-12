@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText" >
+
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:enabled="true"
+        android:text="Crear Actividades" />
+    
+    
+    <TextView
+        android:id="@id/txtAct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dip"
+        android:text="Texto oido"
+        android:textColor="#0587d9"
+        android:textSize="26dip"
+        android:textStyle="bold" />
+    
+     <Button
+        android:id="@+id/Button02"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:enabled="true"
+        android:text="Crear Actividades" />
+     
+     
+    <TextView
+        android:id="@id/txtTarea"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dip"
+        android:text="Texto oido"
+        android:textColor="#0587d9"
+        android:textSize="26dip"
+        android:textStyle="bold" />
+     
+      <Button
+        android:id="@+id/Button03"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:enabled="true"
+        android:text="Crear Actividades" />
+
+      
+    <TextView
+        android:id="@id/txtCom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dip"
+        android:text="Texto oido"
+        android:textColor="#0587d9"
+        android:textSize="26dip"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver" />
+    
+    </LinearLayout>

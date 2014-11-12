@@ -34,16 +34,6 @@
         android:enabled="true"
         android:text="Hablar" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="15dip"
-        android:text="Texto Hablado"
-        android:textColor="#0587d9"
-        android:textSize="26dip"
-        android:textStyle="bold" />
-
     <EditText
         android:id="@+id/txtText"
         android:layout_width="fill_parent"
